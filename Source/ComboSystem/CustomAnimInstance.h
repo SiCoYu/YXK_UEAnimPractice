@@ -38,5 +38,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character|Anim")
 	float Yaw;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character|Anim")
+	float Direction;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character|Anim")
 	FRotator RotationLastTick;
 };

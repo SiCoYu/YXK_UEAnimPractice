@@ -27,8 +27,6 @@ void UCustomAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		bool is_in_air = OwnCharacter->GetMovementComponent()->IsFalling();
 		IsInAir = is_in_air;
 
-		Speed = OwnCharacter->GetVelocity().Size();
-		
 		FRotator Delta = OwnCharacter->GetBaseAimRotation() - OwnCharacter->GetActorRotation();
 		Roll = Delta.Roll;
 		Pitch = Delta.Pitch;
@@ -42,5 +40,15 @@ void UCustomAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		IsAccelerating = acceleration > 0.0f;
 
 		IsFullBody = GetCurveValue("FullBody") > 0.0f;
+
+		FRotator Rotation{ OwnCharacter->GetActorRotation() };
+		FVector Velocity{ OwnCharacter->GetVelocity() };
+		Speed = Velocity.Size();
+		Velocity.Z = 0.0f;
+		bool is_fly = OwnCharacter->GetCharacterMovement()->MovementMode == EMovementMode::MOVE_Flying;
+		if (!is_fly)
+		{
+			Direction = CalculateDirection(Velocity, Rotation);
+		}
 	}
 }
