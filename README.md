@@ -34,7 +34,9 @@ Each instance is an independent project to facilitate everyone to use and learn
 * AnimOverride
 * AnimPost
 * AnimSub
+* BoneDriven
 * CreateAimOffset
+* FABRIK
 * LegIK
 * MultiStateMachine
 * Retargeting
